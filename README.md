@@ -1,5 +1,7 @@
 # 🎉 CapstoneEvents ✨
 
+Demo video: https://youtu.be/dpEIRfApGXY
+
 ## Table of contents
 1. Distinctiveness and Complexity
 2. Files and their contents
