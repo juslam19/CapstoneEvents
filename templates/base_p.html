@@ -1,0 +1,182 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CapstoneEvents</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="{% static 'css/app.css' %}" rel="stylesheet">
+
+    <script type="text/javascript" src="{% static '/capstone/helper.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav id="navbar" class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'favicon/favicon-32x32.png' %}"/>
+                CapstoneEvents
+            </a>
+        </div>
+
+        <!-- Button for Dropdown Navbar -->
+        <button class="navbar-toggler" id="toggler" type="button" class="navbar-toggle" onclick="changeclass()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links on Navbar -->
+        <div class="navbar-collapse collapse" id="myNavbar">
+            {% if user.is_authenticated %}
+                {% if user.is_person %}
+                    <ul class="nav navbar-nav">
+
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="myNavbtn2" href="#" role="button" onclick="changeclass2()">
+                                    Events
+                                </a>
+                                <ul class="dropdown-menu" id="myNavbar2" style="padding:0 15px 0 15px">
+                                    <li><a class="nav-link" href="{% url 'persons:all_list' %}">Explore</a></li>
+                                    <li><a class="nav-link" href="{% url 'persons:event_list' %}">Interests</a></li>
+                                    <li><a class="nav-link" href="{% url 'persons:past_event_list' %}">Past Events</a></li>
+                                    <li><a class="nav-link" href="{% url 'persons:search_list' %}">Search</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="myNavbtn3" href="#" role="button" onclick="changeclass3()">
+                                    My Events
+                                </a>
+                                <ul class="dropdown-menu" id="myNavbar3" style="padding:0 15px 0 15px">
+                                    <li><a class="nav-link" href="{% url 'persons:ticketed_event_list' %}">Ticketed</a></li>
+                                    <li><a class="nav-link" href="{% url 'persons:ended_event_list' %}">Ended</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'persons:org_list' %}">Organisations</a>
+                        </li>
+                    </ul>
+                {% else %}
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'organisations:event_change_list' %}">My Events</a>
+                        </li>
+                    </ul>
+                {% endif %}
+            {% endif %}
+
+            <script>
+                function changeclass() {
+                    var NAV = document.getElementById("myNavbar")
+                    if ( NAV.className.match(/(?:^|\s)show(?!\S)/) ) {
+                        NAV.className = "navbar-collapse collapse"
+                    } else {
+                        NAV.className ="navbar-collapse collapse show"
+                    }
+                }
+
+                function changeclass2() {
+                    var BTN = document.getElementById("myNavbtn2")
+                    var NAV = document.getElementById("myNavbar2")
+                    if ( BTN.className.match(/(?:^|\s)show(?!\S)/) ) {
+                        BTN.className = "nav-link dropdown-toggle"
+                        NAV.className = "dropdown-menu dropdown-menu-dark"
+                    } else {
+                        BTN.className = "nav-link dropdown-toggle show"
+                        NAV.className = "dropdown-menu dropdown-menu-dark show"
+                    }
+                }
+
+                function changeclass3() {
+                    var BTN = document.getElementById("myNavbtn3")
+                    var NAV = document.getElementById("myNavbar3")
+                    if ( BTN.className.match(/(?:^|\s)show(?!\S)/) ) {
+                        BTN.className = "nav-link dropdown-toggle"
+                        NAV.className = "dropdown-menu dropdown-menu-dark"
+                    } else {
+                        BTN.className = "nav-link dropdown-toggle show"
+                        NAV.className = "dropdown-menu dropdown-menu-dark show"
+                    }
+                }
+            </script>
+
+            <ul class="navbar-nav ml-auto right-align">
+                {% if user.is_authenticated %}
+                    {% if user.is_person %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'persons:profile' %}">
+                                <strong>{{ user.username }}</strong> Profile
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'organisations:profile' %}">
+                                <strong>{{ user.username }}</strong> Profile
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="card-body ">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="body">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div class="body wrapper">
+    </div>
+
+    <footer class="footer" style="background-color: #e3f2fd">
+        <div class="body">
+            <h4>CapstoneEvents</h4>
+            <h6>Event creation and ticketing</h6>
+            CapstoneEvents, Created 2022
+        </div>
+    </footer>
+
+</body>
+
+</html>
+

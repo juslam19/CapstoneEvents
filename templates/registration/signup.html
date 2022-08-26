@@ -1,0 +1,20 @@
+{% extends 'base_p.html' %}
+
+{% block content %}
+<div style="display: flex; justify-content: center;">
+  <div>
+    <h2 style="text-align:center">Sign up for your free account</h2>
+    <h6 style="text-align:center">Which account type best suits your needs?</h6>
+    <div style="display: flex; justify-content: center;">
+      <a href="{% url 'person_signup' %}" class="btn btn-light" role="button">
+        <img style="max-height:450px" src="../../static/img/person.jpg" class="img-fluid" alt="">
+        <h5>Personal</h5>
+      </a>
+      <a href="{% url 'organisation_signup' %}" class="btn btn-light" role="button">
+        <img style="max-height:450px" src="../../static/img/organisation.jpg" class="img-fluid" alt="">
+        <h5>Organisation</h5>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

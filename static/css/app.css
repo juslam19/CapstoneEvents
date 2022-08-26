@@ -1,0 +1,73 @@
+.body {
+  width: 95%;
+  margin: 20px auto 20px auto;
+}
+
+.start {
+    max-width: 800px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 10px;
+}
+
+.crop {
+    height: 200px;
+    overflow: hidden;
+}
+
+.crop img {
+    margin: -100px 0 0 0px
+}
+
+#intro {
+    height: 600px;
+    background-image: url('../img/water.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+div.inner {
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.wrapper{
+  flex:1000;
+}
+
+@media only screen and (max-width: 800px) {
+  th:nth-child(3), th:nth-child(4),
+  td:nth-child(3), td:nth-child(4) {
+    display:none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  th:nth-child(2),
+  td:nth-child(2) {
+    display:none;
+  }
+}
+
+.preview {
+    height: 300px;
+    width: 300px;
+    border: 1px solid black;

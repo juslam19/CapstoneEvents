@@ -1,0 +1,53 @@
+{% extends 'base_p.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="start body">
+
+  {% if form.non_field_errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.non_field_errors %}
+    <p{% if forloop.last %} class="mb-0"{% endif %}>{{ error }}</p>
+    {% endfor %}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endif %}
+
+  <h2>Sign up as a {{ user_type }}</h2>
+
+  <div style="padding: 10px 0 10px 0">
+    <div id="preview_frame" style="width: 100%; display:none">
+      <h6>Image Preview</h6>
+      <img id="preview" src="#" style="width: 100%; border: 2px solid black"/>
+    </div>
+  </div>
+  <script>
+      $(document).ready(() => {
+          $("#id_image").change(function () {
+              const file = this.files[0];
+              if (file) {
+                  let reader = new FileReader();
+                  reader.onload = function (event) {
+                      $("#preview")
+                        .attr("src", event.target.result);
+                  };
+                  reader.readAsDataURL(file);
+              }
+              document.getElementById("preview_frame").style.display = "block";
+          });
+      });
+  </script>
+
+  <form method="post" novalidate enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+    {{ form|crispy }}
+    <br>
+    <button type="submit" class="btn btn-success">Sign up</button>
+  </form>
+
+</div>
+{% endblock %}
