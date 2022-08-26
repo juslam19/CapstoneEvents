@@ -1,0 +1,15 @@
+{% extends 'base_p.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="start body">
+  <h2>Update your interests</h2>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Save changes</button>
+    <a href="{% url 'persons:event_list' %}" class="btn btn-outline-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

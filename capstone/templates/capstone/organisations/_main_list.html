@@ -1,0 +1,54 @@
+<div class="card">
+    <table class="table mb-0" style="table-layout: fixed;">
+        <thead>
+        <tr>
+            <th>Event</th>
+            <th>Participants</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Results</th>
+            <th>Delete</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+        <tr>
+
+            <td>{{ event.name }}<br>
+                {{ event.category.get_html_badge }}
+                <div id="delete-{{event.id}}-confirm-message" style="display:none; color:red">
+                    <h6>Warning: Deletion cannot be undone</h6>
+                </div>
+            </td>
+            <td>{{ event.booked }} / {{ event.capacity }}</td>
+            <td>{{ event.start_time }}</td>
+            <td>{{ event.end_time }}</td>
+            <td>
+                <a href="{% url 'organisations:event_results' event.pk %}" class="btn btn-primary">Results</a>
+            </td>
+            <td>
+
+                <button id="delete-{{event.id}}" class="btn btn-warning" onclick="confirm('{{ event.id }}')">
+                    Delete
+                </button>
+
+                <form action="{% url 'organisations:delete' event.pk %}">
+                    <button id="delete-{{event.id}}-confirm" type="submit"
+                            class="btn btn-danger" style="display:none; font-weight:bold">
+                        CONFIRM
+                    </button>
+                </form>
+
+            </td>
+
+        </tr>
+
+        {% empty %}
+        <tr>
+            <td class="bg-light text-center font-italic" colspan="5">There are no events currently.</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

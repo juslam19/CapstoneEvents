@@ -1,0 +1,56 @@
+{% extends 'base_p.html' %}
+
+{% block content %}
+
+<body>
+
+    <section id="intro" class="justify-content-center align-items-center">
+      <div class="container position-relative" style="min-height:500px">
+          <div class="inner">
+              <h1><b>CapstoneEvents</b></h1>
+            <h2>Event creation and ticketing</h2>
+              <br>
+            <h4>Where Organisations can reach out to people,
+              and People can reach organisations.</h4>
+              <br>
+            <button onclick="window.location.href='{% url 'signup' %}'" class="btn btn-primary">Sign up for free</button>
+          </div>
+      </div>
+    </section>
+
+    <hr>
+
+  <section class="d-flex justify-content-center align-items-center" >
+    <div class="container position-relative">
+    <div class="row">
+      <div class="col-lg-6 order-1 order-lg-2">
+          <img src="../../static/img/party.jpg" class="img-fluid" alt="">
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+
+          <h3>Both for Organisations and People</h3>
+          <p>
+            We also pack a choc full of features that both will enjoy.
+          </p>
+          <h5>For People:</h5>
+          <ul>
+            <li> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+            <li> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+          </ul>
+          <h5>For Organisations:</h5>
+          <ul>
+            <li> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+            <li> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+          </ul>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base_p.html' %}
+
+{% load crispy_forms_tags humanize %}
+
+{% block content %}
+
+{% if is_owner %}
+  <h2 class="mb-3">{{ event.name }} Results</h2>
+  <a href="{% url 'organisations:details' event.pk %}" class="btn btn-primary">Event Details</a>
+  <br>
+  <br>
+  <div class="card">
+    <div class="card-header">
+      <strong>Participant details</strong>
+    </div>
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Interests</th>
+          <th>Booking Date</th>
+          <th>Contact Details</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ticketed_event in ticketed_events %}
+          <tr>
+
+            <td>{{ ticketed_event.person.name }}</td>
+            <td>{{ ticketed_event.person.user }}</td>
+            <td>{% for interest in ticketed_event.person.interests.all %} {{ interest.get_html_badge }} {% endfor %}</td>
+            <td>{{ ticketed_event.booking_date }}</td>
+            <td>{{ ticketed_event.person.mobile }}</td>
+            <td>
+              <a href="{% url 'organisations:person_profile' ticketed_event.person.pk %}" class="btn btn-primary">Person Details</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="card-footer text-muted">
+      Total participants: <strong>{{ total_ticketed_events }}</strong>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="next-previous">
+    {% if ticketed_events.has_previous %}
+    <button class="btn btn-primary" onclick="location.href='?page={{ ticketed_events.previous_page_number }}'">Prev Page</button>
+    {% else %}
+    <button class="btn btn-primary" disabled>Prev Page</button>
+    {% endif %}
+
+    <!--        This makes the left previous and right next buttons-->
+    <div id="paginator-index" style="text-align:center">
+      <div id="events-number">
+        Showing {{ ticketed_events.start_index }}-{{ ticketed_events.end_index }} of {{ ticketed_events.paginator.count }}
+      </div>
+      <div id="page-number">
+        Page {{ ticketed_events.number }} of {{ ticketed_events.paginator.num_pages }}
+      </div>
+    </div>
+
+    {% if ticketed_events.has_next %}
+    <button class="btn btn-primary" onclick="location.href='?page={{ ticketed_events.next_page_number }}'">Next Page</button>
+    {% else %}
+    <button class="btn btn-primary" disabled>Next Page</button>
+    {% endif %}
+  </div>
+{% else %}
+
+  <div style="text-align:center">
+    <h6>Unfortunately, you aren't allowed to see this. </h6>
+  </div>
+
+{% endif %}
+
+{% endblock %}

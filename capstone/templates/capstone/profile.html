@@ -1,0 +1,48 @@
+{% extends 'base_p.html' %}
+
+{% block content %}
+
+<div class="container position-relative">
+
+    {% if user == person.user or not user.is_person and is_involved %}
+    <div class="container position-relative">
+        <div class="row">
+            <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+
+                <div class="mb-3">
+                    <h6>Personal profile</h6>
+                    <h2>{{ person.name }}</h2>
+                </div>
+
+                <hr>
+                <h4>Details</h4>
+
+                <h6>Username:</h6>
+                <p>{{ person.user }}</p>
+                <h6>Interests: </h6>
+                <p>
+                    {% for interest in person.interests.all %}
+                        {{ interest.get_html_badge }}
+                    {% endfor %}
+                    <a href="{% url 'persons:person_interests' %}"><small> (update interests) </small></a>
+                </p>
+
+                <h6>Contact:</h6>
+                <p>{{ person.mobile }}</p>
+
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2">
+                <img src="{{ person.image.url }}" class="card-img-top">
+            </div>
+        </div>
+    </div>
+    {% else %}
+
+    <div style="text-align:center">
+        <h6>Unfortunately, you aren't allowed to see this. </h6>
+    </div>
+
+    {% endif %}
+</div>
+
+{% endblock %}

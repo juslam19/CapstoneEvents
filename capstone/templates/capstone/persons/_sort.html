@@ -1,0 +1,19 @@
+<label for="sort"><h6>Sort by</h6></label>
+<select id="sort" style="text-align:left; border: 1px solid #ced4da" class="btn active dropdown-toggle" name="sort">
+    <optgroup label="Most to Least">
+        <option id="-likes" value="-likes">Most Liked</option>
+        <option id="-booked" value="-booked">Ticketed People</option>
+        <option id="-capacity" value="-capacity">Event Capacity</option>
+        <option id="start_time" value="start_time">Starting Soon</option>
+    </optgroup>
+    <optgroup label="Least to Most">
+        <option id="likes" value="likes">Least Liked</option>
+        <option id="booked" value="booked">Ticketed People</option>
+        <option id="capacity" value="capacity">Event Capacity</option>
+        <option id="-start_time" value="-start_time">Starting Latest</option>
+    </optgroup>
+</select>
+
+<script>
+    document.querySelector('#{{ sort }}').selected = 'true';
+</script>

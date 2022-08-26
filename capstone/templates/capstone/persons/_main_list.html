@@ -1,0 +1,56 @@
+<div class="row" data-masonry='{"percentPosition": true }'>
+    {% for event in events %}
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+        <div class="card">
+            <img src="{{ event.image.url }}" class="card-img-top">
+            <div class="card-body">
+
+                <h4 class="card-title">{{ event.name }}</h4>
+                <p>{{ event.category.get_html_badge }}
+                    <a href="{% url 'persons:org_profile' event.organisation.pk %}">
+                        {{ event.organisation.get_html_badge }}
+                    </a>
+                </p>
+
+                <h6 class="card-text">
+                    Starts: {{ event.start_time }} <br>
+                    Ends: {{ event.end_time }}</h6>
+                <h6>Taken slots: {{ event.booked }} / {{ event.capacity }} </h6>
+
+                <div class="container" style="display: flex;">
+                    <div style="flex:1">
+                        {% if user.is_authenticated and user.is_person %}
+                            <i id="like-{{event.id}}-button" class="fa fa-heart w3-hover-text-indigo"
+                               style="font-size: 30px;cursor: pointer; user-select: none;color:black;"
+                               onclick="like('{{ event.id }}')"></i>
+                        {% else %}
+                            <i class="fa fa-heart w3-hover-text-indigo"
+                               style="font-size: 30px; user-select: none;color:black;"
+                               disabled></i>
+                        {% endif %}
+                        <b id="like-{{event.id}}-count">{{ event.likes }}</b>
+                    </div>
+                    <div style="flex:1">
+                        <a href="{% url 'persons:details' event.pk %}" style="float:right;position:relative; top:-7.5px"
+                           class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+       update_like_button('{{ event.id }}');
+    </script>
+
+    {% endfor %}
+
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+        <div class="card">
+            <img src="../../../static/img/party.jpg" class="card-img-top">
+            <div class="card-body">
+                <h4 class="card-title">That's all, Folks!</h4>
+            </div>
+        </div>
+    </div>
+</div>

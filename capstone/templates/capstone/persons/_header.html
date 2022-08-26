@@ -1,0 +1,16 @@
+<h2>Events</h2>
+
+<ul class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav mb-3">
+  <li class="nav-item flex-sm-fill">
+    <a class="nav-link{% if active == 'all' %} active{% endif %}" href="{% url 'persons:all_list' %}">Explore</a>
+  </li>
+  <li class="nav-item flex-sm-fill">
+    <a class="nav-link{% if active == 'new' %} active{% endif %}" href="{% url 'persons:event_list' %}">Interests</a>
+  </li>
+  <li class="nav-item flex-sm-fill">
+    <a class="nav-link{% if active == 'past' %} active{% endif %}" href="{% url 'persons:past_event_list' %}">Past Events</a>
+  </li>
+  <li class="nav-item flex-sm-fill">
+    <a class="nav-link{% if active == 'search' %} active{% endif %}" href="{% url 'persons:search_list' %}">Search</a>
+  </li>
+</ul>

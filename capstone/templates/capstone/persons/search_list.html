@@ -1,0 +1,91 @@
+{% extends 'base_p.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% include 'capstone/persons/_header.html' with active='search' %}
+
+{% load static %}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+<form class="container" style="max-width:800px" action="{% url 'persons:search_list' %}" method='GET'>
+    <div style="width:100%">
+        <div style="float:left">
+            <h3>Search</h3>
+        </div>
+        <div style="float:right">
+            {% include 'capstone/persons/_sort.html' %}
+        </div>
+    </div>
+
+    <br><br>
+    <h6>Event full or partial name</h6>
+    <input class="textinput textInput form-control" type="text" name="substring" placeholder="Event full or partial name" value="{{ substring }}">
+
+    <br>
+    <h6>Earliest start time, Latest end time</h6>
+    <input class="textinput textInput form-control" type="datetime-local" name="start_time" value="{{ start_time }}">
+    <input class="textinput textInput form-control" type="datetime-local" name="end_time" value="{{ end_time }}">
+
+    <br>
+    <div style="display: flex;">
+        <div style="flex:1">
+            <h6>Event Status</h6>
+            <input type="checkbox" id="available" name="available" value="available"
+                {% if available == "available" %} checked="checked" {% endif %}>
+            <label for="available">Available</label><br>
+            <input type="checkbox" id="past" name="past" value="past"
+                {% if past == "past" %} checked="checked" {% endif %}>
+            <label for="past">Past</label>
+        </div>
+        <div style="flex:1;" >
+            <h6>Categories</h6>
+            {% csrf_token %}
+            {{ form|crispy }}
+        </div>
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Search & Sort">
+    </div>
+</form>
+
+<hr>
+
+<div class="container" style="border: 1px solid black; max-width:800px">
+    <h6>Searching using the parameters...</h6>
+    {% if substring != "" %} <h6>Event full or partial name: "{{ substring }}"</h6> {% endif %}
+    {% if start_time != "" %} <h6>Earliest start time: "{{ start_time }}"</h6>{% endif %}
+    {% if end_time != "" %} <h6>Latest end time: "{{ end_time }}"</h6>{% endif %}
+    {% if available != null or past != null  %}
+        <h6>Available/Past Events: "
+            {% if available != null %}Available Events;{% endif %}
+            {% if past != null %}Past Events;{% endif %} "
+        </h6>
+    {% endif %}
+    <p>{% for category in categories %} {{ category.get_html_badge }} {% endfor %}<p>
+
+    <script>
+        var pks = "{{ pks | safe }}";
+        const onlyNumbers = Array.from(pks).filter(Number);
+
+        var base = onlyNumbers[0];
+
+        for(i = 0; i < onlyNumbers.length; i++){
+            var id = onlyNumbers[i] - base + 1;
+            console.log(`#id_category_${id}`);
+            var checkbox = document.querySelector(`#id_category_${id}`);
+            checkbox.checked = "checked";
+        }
+    </script>
+
+</div>
+
+
+
+<hr>
+
+{% include 'capstone/persons/_main_list.html' %}
+
+{% endblock %}

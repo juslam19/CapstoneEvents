@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-12">
+        <div style="padding: 10px 0 10px 0">
+            <div id="preview_frame" style="width: 100%; display:{% if event.image.url == '' or event.image.url == null %}none{% else %}block{% endif %}">
+                <h6>Image Preview</h6>
+                <img id="preview" src="{% if event.image.url != '' or event.image.url == null %}{{ event.image.url }}{% else %}#{% endif %}" style="width: 100%; border: 2px solid black"/>
+            </div>
+
+            <script>
+            $(document).ready(() => {
+                $("#id_image").change(function () {
+                    const file = this.files[0];
+                    if (file) {
+                        let reader = new FileReader();
+                        reader.onload = function (event) {
+                            $("#preview")
+                              .attr("src", event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                    document.getElementById("preview_frame").style.display = "block";
+                });
+            });
+          </script>
+
+        </div>
+    </div>
+</div>

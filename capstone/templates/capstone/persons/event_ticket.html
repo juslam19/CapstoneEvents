@@ -1,0 +1,69 @@
+{% extends 'base_p.html' %}
+
+{% block content %}
+
+
+{% if is_owner %}
+    <div class="container position-relative" style="max-width:800px">
+
+        <div class="mb-3">
+            <h6>CapstoneEvents Ticket</h6>
+            <h2 style="overflow-wrap: break-word"><b>{{ event.name }}</b></h2>
+            <h4>By {{ event.organisation.name }}</h4>
+        </div>
+
+
+        <hr>
+        <div class="container position-relative mb-3">
+            <h5>Personal details</h5>
+            <div class="container position-relative">
+                <p><b>User Account:</b> {{ person.user }}</p>
+                <p><b>Personal Name:</b> {{ person.name }}</p>
+                <p><b>Mobile contact:</b> {{ person.mobile }}</p>
+            </div>
+
+        </div>
+
+
+        <hr>
+        <div class="container position-relative mb-3">
+            <h5>Event details</h5>
+            <div class="container position-relative">
+                <p><b>Event name:</b> {{ event.name }}</p>
+                <p><b>Organisation:</b> {{ event.organisation.name }}</p>
+                <p><b>Category:</b> {{ event.category }}</p>
+                <p><b>Start time:</b> {{ event.start_time }}</p>
+                <p><b>End time:</b> {{ event.end_time }}</p>
+            </div>
+        </div>
+
+
+        <hr>
+        <div class="container position-relative mb-3" style="border:solid black 2px">
+            <h5>IMPORTANT DETAILS</h5>
+
+            <hr>
+            <h5>Ticket times</h5>
+            <div class="container position-relative">
+                <p><b>Booking date:</b> {{ booking_date }} </p>
+                <p><b>Ticket viewed:</b> {{ current_time }} </p>
+            </div>
+            <h5>Event updates</h5>
+            <div class="container position-relative">
+                <p><b>Event Created:</b> {{ event.created }}</p>
+                <p><b>Last Update:</b> {{ event.updated }}</p>
+                <p><b>No of Updates:</b> {{ event.update_no }}</p>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+
+    <div style="text-align:center">
+        <h6>Unfortunately, you aren't allowed to see this. </h6>
+    </div>
+
+{% endif %}
+
+    {% endblock %}
+

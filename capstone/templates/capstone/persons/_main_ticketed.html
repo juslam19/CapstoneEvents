@@ -1,0 +1,38 @@
+
+<div class="card">
+    <table class="table mb-0">
+        <thead>
+        <tr>
+            <th>Event Name</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Booking Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ticketed_event in ticketed_events %}
+        <tr>
+            <td>{{ ticketed_event.event.name }}<br>
+                {{ ticketed_event.event.category.get_html_badge }}<br>
+                <a href="{% url 'persons:org_profile' ticketed_event.event.organisation.pk %}">
+                    {{ ticketed_event.event.organisation.get_html_badge }}
+                </a>
+            </td>
+            <td>{{ ticketed_event.event.start_time }}</td>
+            <td>{{ ticketed_event.event.end_time }}</td>
+            <td>{{ ticketed_event.booking_date }}</td>
+
+            <td>
+                <a href="{% url 'persons:view_ticket' ticketed_event.event.pk %}" class="btn btn-primary">.Ticket.</a>
+                <a href="{% url 'persons:details' ticketed_event.event.pk %}" class="btn btn-primary">Details</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td class="bg-light text-center font-italic" colspan="6">There are no events currently.</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

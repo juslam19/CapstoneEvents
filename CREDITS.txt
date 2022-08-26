@@ -1,0 +1,113 @@
+CREDITS FOR GRAPHICS / IMAGES USED
+
+########################################################################################################################
+
+This website is used for non-profit educational purposes, which is under the fair use definition of the U.S.
+(where I assume HavardX bases their operations, as the institution of Havard resides in the U.S.)
+
+ADDITIONALLY, I DO NOT CLAIM OWNERSHIP, OR TAKE CREDIT FOR THE GRAPHICS / IMAGES USED. ALL GRAPHICS / IMAGES LISTED
+BELOW BELONG TO AND ARE CREDITED TO THEIR RESPECTIVE OWNERS / SOURCES.
+
+PLEASE NOTE THAT THESE GRAPHICS ARE SIMPLY USED TO ENHANCE THE WEBSITE FOR DEMONSTRATION PURPOSES AND ARE IN NO WAY
+INTEGRAL TO THE FUNCTIONS OF THE WEBSITE. THE WEBSITE CAN STILL FUNCTION NORMALLY WITHOUT THE BELOW GRAPHICS / IMAGES.
+
+========================================================================================================================
+
+U.S. COPYRIGHT OFFICE- FAIR USE DEFINITION
+(Source: http://www.copyright.gov/fls/fl102.html)
+
+One of the rights accorded to the owner of copyright is the right to reproduce or to authorize others to reproduce the
+work in copies or photo records.  This right is subject to certain limitations found in sections 107 through 118 of the
+copyright law (title 17, U.S. Code).  One of the more important limitations is the doctrine of “fair use”.  The doctrine
+of fair use has developed through a substantial number of court decisions over the years and has been codified in
+section 107 of the copyright law.
+
+Section 107 contains a list of the various purposes for which the reproduction of a particular work may be considered
+fair, such as criticism, comment, news reporting, teaching, scholarship, and research.  Section 107 also sets out in
+four factors to be considered in determining whether or not a particular use is fair:
+
+1. The purpose and character of the use, including whether such use is of commercial nature or is for nonprofit
+    educational purposes
+2. The nature of the copyrighted work
+3. The amount and substantiality of the portion used in relation to the copyrighted work as a whole
+4. The effect of the use upon the potential market for, or value of, the copyrighted work
+
+========================================================================================================================
+
+The following document provides credit to the various sources for their graphics used.
+
+In the following format:
+[Website Component Type]
+[Website Component Usage]
+    [Path from root directory]
+        [Name of component(s) in files]
+            [Source]
+            [Information]
+        [Name of component(s) in files]
+            [Source]
+            [Information]
+
+------------------------------------------------------------------------------------------------------------------------
+
+Favicon Package
+1. Website Favicon
+    CapstoneEvents/static/favicon
+        about.txt
+        android-chrome-192x192.png
+        android-chrome-512x512.png
+        apple-touch-icon.png
+        favicon.ico
+        favicon-16x16.png
+        favicon-32x32.png
+        site.webmanifest
+            https://favicon.io/emoji-favicons/fireworks/
+            The emoji graphics are from the open source project Twemoji.
+            The graphics are copyright 2020 Twitter, Inc and other contributors.
+            The graphics are licensed under CC-BY 4.0.
+
+Images (.jpg, .png, .webp, etc.)
+1. Event Images
+    CapstoneEvents/media/images
+        event1.webp
+            https://blueseatblogs.com/wp-content/uploads/2018/07/consciousness-709143.jpg
+        event2.webp
+            https://beebom.com/wp-content/uploads/2020/01/Hide-the-Pain-Harold-is-Imgur%E2%80%99s-Meme-of-the-Decade.jpg?w=3000&quality=75
+        event3.jpg
+            https://media.npr.org/assets/img/2020/04/22/gettyimages-1210618651_wide-4f974c1b846418412d4f9211cee0fff9da805f26-s1100-c50.jpg
+        hokusai.jpg
+            https://cdn.theculturetrip.com/wp-content/uploads/2012/01/hokusai.jpg
+        TZLIMMZT7ZHUTNFDM3LRB2Z2YU.jpg
+            https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/TZLIMMZT7ZHUTNFDM3LRB2Z2YU.jpg
+
+2. Company Logos
+    CapstoneEvents/media/images
+        logo1.png
+            https://scontent.fsin5-1.fna.fbcdn.net/v/t1.18169-9/17991896_1823144401342820_3173353148969973624_n.png?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=OxWNTH39z2EAX91u-Km&_nc_ht=scontent.fsin5-1.fna&oh=00_AT-tQefKFqBgNYwxMGe7gB0vWu-orUvCEjqsceYA_LUw1A&oe=62DB52AC
+        logo2.png
+            https://assets.spe.org/dims4/default/9dc5608/2147483647/strip/true/crop/600x520+0+0/resize/800x693!/quality/90/?url=http%3A%2F%2Fspe-brightspot.s3.amazonaws.com%2Fd9%2Fae%2Fa6beb606475faf637cddb5df2ec1%2Fstandard-oil-logo.png
+        logo3.png
+            https://upload.wikimedia.org/wikipedia/en/a/ae/Los_Pollos_Hermanos_logo.png
+
+3. Person Image
+    CapstoneEvents/media/images
+        Tom.jpg
+            https://this-person-does-not-exist.com
+
+4. Website pictures
+    CapstoneEvents/static/img
+        organisation.jpg
+            https://unsplash.com/photos/Bl-LiSJOnlY
+            Anthony Tyrrell
+            Free to use under the Unsplash License
+        party.jpg
+            https://unsplash.com/photos/ZhQCZjr9fHo
+            Aditya Chinchure
+            Free to use under the Unsplash License
+        person.jpg
+            https://unsplash.com/photos/6VPEOdpFNAs
+            Lachlan Dempsey
+            Free to use under the Unsplash License
+        water.jpg
+            https://unsplash.com/photos/T9Gsevu_N8Y
+            elizabeth lies
+            Free to use under the Unsplash License

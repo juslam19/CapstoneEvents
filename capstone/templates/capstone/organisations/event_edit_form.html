@@ -1,0 +1,29 @@
+{% extends 'base_p.html' %}
+
+{% block content %}
+
+  <div class="start body">
+    {% if is_owner %}
+      <br>
+      <div class="mb-3">
+        <h6>Edit Event</h6>
+        <h2 style="overflow-wrap: break-word">{{ event.name }}</h2>
+      </div>
+      {% include 'capstone/organisations/_image_preview.html' %}
+      {% load crispy_forms_tags %}
+      <form method="POST" novalidate enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <a href="{% url 'organisations:details' event.pk %}" class="btn btn-outline-secondary" role="button">Cancel</a>
+      </form>
+    {% else %}
+
+      <div style="text-align:center">
+        <h6>Unfortunately, you aren't allowed to see this. </h6>
+      </div>
+
+    {% endif %}
+  </div>
+
+{% endblock %}

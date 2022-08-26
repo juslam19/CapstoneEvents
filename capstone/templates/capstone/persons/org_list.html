@@ -1,0 +1,65 @@
+{% extends 'base_p.html' %}
+
+{% block content %}
+
+<h2>Organisations</h2>
+
+<form class="container" style="max-width:800px" action="{% url 'persons:org_list' %}" method='GET'>
+    <div style="display: flex;">
+        <input style="flex:1" class="textinput textInput form-control" type="text" name="substring" placeholder="Search Organisations" value="{{ substring }}">
+        &nbsp
+        <input class="btn btn-primary" type="submit" value="Search">
+    </div>
+</form>
+
+<hr>
+
+<div class="container" style="border: 1px solid black; max-width:800px">
+{% if substring != "" %}
+    <h6 class="container">Showing matches for "{{ substring }}"</h6>
+{% else %}
+    <h6 class="container">Currently displaying all organisations</h6>
+{% endif %}
+</div>
+
+<hr>
+
+<div class="row" data-masonry='{"percentPosition": true }'>
+    {% for organisation in organisations %}
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+        <div class="card">
+            <img src="{{ organisation.image.url }}" class="card-img-top">
+            <div class="card-body">
+                <h4 class="card-title">{{ organisation.name }}</h4>
+                <h6>Event Categories:
+                {% for event in organisation.events.all %}
+                    <p class="categories-{{ organisation.id }}">{{ event.category.get_html_badge }}</p>
+                {% endfor %}
+                </h6>
+
+                <script>
+                    $('.categories-{{ organisation.id }}').filter(function(){
+                        var txt = $.trim(this.innerHTML);
+                        return ($(this).nextAll().filter(function () {
+                            return $.trim(this.innerHTML) === txt
+                        }).length);
+                    }).hide();
+                </script>
+
+                <a href="{% url 'persons:org_profile' organisation.pk %}" class="btn btn-primary">View Profile</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-2 mb-4">
+        <div class="card">
+            <img src="../../../static/img/party.jpg" class="card-img-top">
+            <div class="card-body">
+                <h4 class="card-title">That's all, Folks!</h4>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
